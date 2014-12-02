@@ -1,5 +1,8 @@
 ---
 - hosts: all
   tasks:
-    - name: say hellaw
-      command: "echo hello"
+    - name: update apt cache
+      apt: update_cache=yes cache_valid_time=3600
+
+    - name: install nginx
+      apt: name=nginx state=present
