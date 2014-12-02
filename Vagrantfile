@@ -20,10 +20,16 @@ Vagrant.configure("2") do |config|
           '--natdnshostresolver1', 'on',
           '--name', machine[:name]]
       end
+
+      if machine[:name] == machines.last[:name]
+        c.vm.provision :ansible do |ansible|
+          ansible.playbook = 'provisioning/playbook.yml'
+          ansible.sudo = true
+          # force ansible to run on all hosts
+          ansible.limit = 'all'
+        end
+      end
     end
   end
 
-  config.vm.provision :ansible do |ansible|
-    ansible.playbook = 'provisioning/playbook.yml'
-  end
 end
