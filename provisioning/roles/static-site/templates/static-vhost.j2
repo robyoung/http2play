@@ -1,16 +1,17 @@
 server {
   listen 443 {{ listen_protos }};
-  server_name _;
+  server_name "{{ hostname }}";
 
-  root /var/www;
+  root /var/{{ src }};
 
   ssl on;
   ssl_certificate /etc/nginx/ssl/server.crt;
   ssl_certificate_key /etc/nginx/ssl/server.key;
+  ssl_ciphers "DES-CBC3-SHA";
+  ssl_prefer_server_ciphers on;
 
   location / {
     index index.html;
   }
 
 }
-

@@ -1,0 +1,12 @@
+---
+- name: update apt cache
+  apt: update_cache=yes cache_valid_time=3600
+
+- name: install apt packages
+  apt: name=wireshark state=latest
+
+- name: install vim
+  apt: name=vim state=latest
+
+- name: add hosts file
+  template: src=hosts.j2 dest=/etc/hosts

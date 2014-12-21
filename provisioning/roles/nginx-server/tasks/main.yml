@@ -1,0 +1,30 @@
+---
+- name: add apt key for nginx repository
+  apt_key: url=http://nginx.org/keys/nginx_signing.key
+
+- name: add nginx apt repository
+  apt_repository: repo='deb http://nginx.org/packages/mainline/ubuntu/ trusty nginx'
+
+- name: add nginx apt source repository
+  apt_repository: repo='deb-src http://nginx.org/packages/mainline/ubuntu/ trusty nginx'
+
+- name: update apt cache
+  apt: update_cache=yes cache_valid_time=3600
+
+- name: install nginx
+  apt: name=nginx state=latest
+
+- name: copy up ssl cert
+  copy: src=ssl dest=/etc/nginx/
+
+- name: create apache style sites directories
+  file: path=/etc/nginx/{{ item }} state=directory
+  with_items:
+    - sites-available
+    - sites-enabled
+
+- name: remove default vhost
+  file: path=/etc/nginx/conf.d/default.conf state=absent
+
+- name: load sites-available in nginx config
+  lineinfile: dest=/etc/nginx/nginx.conf regexp="include.*sites-enabled" insertafter="include.*conf\.d" line="include /etc/nginx/sites-enabled/*;"

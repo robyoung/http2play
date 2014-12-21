@@ -9,8 +9,16 @@ and [Ansible](http://www.ansible.com/home). I would always recommend using a [vi
 
 Then just `vagrant up`.
 
-You should have two virtual machines serving up a small static site over TLS.
+You should have one virtual machines serving up a small static site over TLS and
+one desktop Ubuntu machine.
 
-https://192.88.1.10 should be using HTTP/1.1
+https://http1-small-site should be using HTTP/1.1
 
-https://192.88.1.11 should be using SPDY/3.1
+https://http2-small-site should be using SPDY/3.1
+
+
+HELP:
+https://ask.wireshark.org/questions/7523/ubuntu-machine-no-interfaces-listed
+http://wiki.wireshark.org/SSL
+
+
