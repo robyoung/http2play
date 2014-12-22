@@ -15,7 +15,7 @@
   apt: name=nginx state=latest
 
 - name: copy up ssl cert
-  copy: src=ssl dest=/etc/nginx/
+  copy: src=files/ssl dest=/etc/nginx/
 
 - name: create apache style sites directories
   file: path=/etc/nginx/{{ item }} state=directory

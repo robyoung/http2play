@@ -5,6 +5,30 @@
 - name: install apt packages
   apt: name=wireshark state=latest
 
+- name: add wireshark group
+  group: name=wireshark system=yes
+
+- name: make dumpcap owned by wireshark group
+  file: path=/usr/bin/dumpcap group=wireshark
+
+- name: setcap
+  command: /sbin/setcap cap_net_raw,cap_net_admin=eip /usr/bin/dumpcap
+
+- name: add vagrant to wireshark group
+  user: name=vagrant groups=wireshark append=yes
+
+- name: create wireshark config directory
+  file: name=/home/vagrant/.wireshark state=directory owner=vagrant group=vagrant
+
+- name: copy up ssl certs
+  copy: src=files/ssl dest=/home/vagrant owner=vagrant group=vagrant
+
+- name: add wireshark config files
+  copy: src=wireshark/{{ item }} dest=/home/vagrant/.wireshark/{{ item }} owner=vagrant group=vagrant
+  with_items:
+    - preferences
+    - ssl_keys
+
 - name: install vim
   apt: name=vim state=latest
 

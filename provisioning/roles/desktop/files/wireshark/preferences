@@ -1,0 +1,3 @@
+# For troubleshooting ignore the mac check result and decrypt also if the Message Authentication Code (MAC) fails.
+# TRUE or FALSE (case-insensitive)
+ssl.ignore_ssl_mac_failed: TRUE
