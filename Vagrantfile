@@ -1,6 +1,7 @@
 
 machines = [
-  {name: 'server', ip: '192.88.1.10'},
+  {name: 'http1-server', ip: '192.88.1.10'},
+  {name: 'http2-server', ip: '192.88.1.11'},
   {name: 'client', ip: '192.88.2.10'},
 ]
 
@@ -38,7 +39,7 @@ Vagrant.configure("2") do |config|
 
       c.vm.provision :ansible do |ansible|
         ansible.groups = {
-          "server" => ["server"],
+          "server" => ["http1-server", "http2-server"],
           "client" => ["client"],
         }
         ansible.playbook = 'provisioning/playbook.yml'

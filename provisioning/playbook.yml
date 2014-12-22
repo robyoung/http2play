@@ -2,8 +2,7 @@
 - hosts: server
   roles:
     - nginx-server
-    - { role: static-site, src: small-site, hostname: http1-small-site, listen_protos: ssl }
-    - { role: static-site, src: small-site, hostname: http2-small-site, listen_protos: "ssl spdy" }
+    - { role: static-site, src: small-site, hostname: "{{ ansible_hostname }}-small" }
 
 - hosts: client
   roles:
