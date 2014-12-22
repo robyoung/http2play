@@ -33,4 +33,4 @@
   apt: name=vim state=latest
 
 - name: add hosts file
-  template: src=hosts.j2 dest=/etc/hosts
+  copy: src=hosts dest=/etc/hosts
