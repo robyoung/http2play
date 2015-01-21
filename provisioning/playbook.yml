@@ -3,6 +3,8 @@
   roles:
     - nginx-server
     - { role: static-site, src: small-site, hostname: "{{ ansible_hostname }}-small" }
+    - { role: static-site, src: govuk-with-assets, hostname: "{{ ansible_hostname }}-govuk-with-assets" }
+    - { role: static-site, src: govuk-no-assets, hostname: "{{ ansible_hostname }}-govuk-no-assets" }
 
 - hosts: client
   roles:
