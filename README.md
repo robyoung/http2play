@@ -25,14 +25,14 @@ Play around with HTTP/1.1 and HTTP/2 (SPDY/3.1 at the moment) side by side.
 
 You should have two virtual machines serving up a few small static sites over TLS.
 
-Site                                   | Protocol | Description
--------------------------------------- | -------- | -----------
-https://http1-small-site               | HTTP/1.1 | A single basic HTML page
-https://http1-server-govuk-no-assets   | HTTP/1.1 | The GOV.UK homepage with all assets served from their normal location
-https://http1-server-govuk-with-assets | HTTP/1.1 | The GOV.UK homepage with all assets served from the same host
-https://http2-small-site               | SPDY/3.1 | A single basic HTML page
-https://http2-server-govuk-no-assets   | SPDY/3.1 | The GOV.UK homepage with all assets served from their normal location
-https://http2-server-govuk-with-assets | SPDY/3.1 | The GOV.UK homepage with all assets served from the same host
+Site                                                                      | Protocol | Description
+------------------------------------------------------------------------- | -------- | -----------
+[http1-small-site](https://http1-small-site)                              | HTTP/1.1 | A single basic HTML page
+[http1-server-govuk-no-assets](https://http1-server-govuk-no-assets)      | HTTP/1.1 | GOV.UK homepage
+[http1-server-govuk-with-assets](https://http1-server-govuk-with-assets)  | HTTP/1.1 | GOV.UK homepage (with assets)
+[http2-small-site](https://http2-small-site)                              | SPDY/3.1 | A single basic HTML page
+[http2-server-govuk-no-assets](https://http2-server-govuk-no-assets)      | SPDY/3.1 | GOV.UK homepage
+[http2-server-govuk-with-assets](https://http2-server-govuk-with-assets)  | SPDY/3.1 | GOV.UK homepage (with assets)
 
 ## Copyright
 
